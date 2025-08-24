@@ -1,3 +1,3 @@
 Challenge amigo secreto
 
-En desarrollo del proyecto
+Proyecto en desarrollo
