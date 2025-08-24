@@ -1,5 +1,7 @@
 // El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
 let amigos =[];
+let amigoSorteado = 0;
+let numeroAmigoSorteado = [];
 //Función para asignar texto a un elemento HTML
 function asignarTextoElemento(elemento, texto){
     let elementoHTML = document.querySelector(elemento);
@@ -11,7 +13,7 @@ function agregarAmigo(){
     let nombreAmigo = document.getElementById("amigo").value.trim();
     if (nombreAmigo === '') {
         //Envío alerta si el campo está vacío
-        alert('El nombre del amigo no puede estar vacío.');
+        alert('Por favor, inserte un nombre valido.');
     }else {
         //Agregar amigo al array
         amigos.push(nombreAmigo);
@@ -26,7 +28,7 @@ function agregarAmigo(){
 //Función para limpiar la caja de texto
 function limpiarCaja() {
     document.querySelector('#amigo').value = '';
-    
+    return;
 }
 //Función para mostrar amigos en la lista
 function mostrarAmigos(){
@@ -35,4 +37,30 @@ function mostrarAmigos(){
         listaAmigos += `<li>${amigo}</li>`;
     });
     asignarTextoElemento('ul', listaAmigos);
+    return;
+}
+//Función para sortear amigo secreto 
+function sortearAmigo(){
+    let numeroGenerado = Math.floor(Math.random()*amigos.length);
+    console.log(numeroGenerado);
+    console.log(numeroAmigoSorteado);
+    if (amigos.length === 0){
+        //Texto si no hay amigos en la lista
+    }else{
+        if (amigos.length == numeroAmigoSorteado.length){
+            //Texto si ya fueron sorteados todos los amigos
+            asignarTextoElemento('ul', '<li>Todos los amigos ya fueron sorteados</li>');
+        }else{
+            //Vuelve a sortear si el número ya fue sorteado
+            if (numeroAmigoSorteado.includes(numeroGenerado)){
+                return sortearAmigo();
+            }else{
+                //Retona el número generado y lo agrega al array de números sorteados
+                asignarTextoElemento('ul', `<li>El amigo secreto es: ${amigos[numeroGenerado]}</li>`);
+                numeroAmigoSorteado.push(numeroGenerado);
+                return numeroGenerado;
+            }
+        }
+    }    
+    return;
 }
