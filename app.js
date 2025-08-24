@@ -4,7 +4,7 @@ let amigoSorteado = 0;
 let numeroAmigoSorteado = [];
 //Función para asignar texto a un elemento HTML
 function asignarTextoElemento(elemento, texto){
-    let elementoHTML = document.querySelector(elemento);
+    let elementoHTML = document.getElementById(elemento);
     elementoHTML.innerHTML = texto;
     return;
 }
@@ -13,7 +13,7 @@ function agregarAmigo(){
     let nombreAmigo = document.getElementById("amigo").value.trim();
     if (nombreAmigo === '') {
         //Envío alerta si el campo está vacío
-        alert('Por favor, inserte un nombre valido.');
+        alert('Por favor, ingrese un nombre valido.');
     }else {
         //Agregar amigo al array
         amigos.push(nombreAmigo);
@@ -36,27 +36,29 @@ function mostrarAmigos(){
     amigos.forEach(amigo => {
         listaAmigos += `<li>${amigo}</li>`;
     });
-    asignarTextoElemento('ul', listaAmigos);
+    asignarTextoElemento('listaAmigos', listaAmigos);
     return;
 }
 //Función para sortear amigo secreto 
 function sortearAmigo(){
     let numeroGenerado = Math.floor(Math.random()*amigos.length);
-    console.log(numeroGenerado);
-    console.log(numeroAmigoSorteado);
+    //console.log(numeroGenerado);
+    //console.log(numeroAmigoSorteado);
     if (amigos.length === 0){
         //Texto si no hay amigos en la lista
+        asignarTextoElemento('resultado', '<li>No hay amigos en la lista</li>');
     }else{
         if (amigos.length == numeroAmigoSorteado.length){
             //Texto si ya fueron sorteados todos los amigos
-            asignarTextoElemento('ul', '<li>Todos los amigos ya fueron sorteados</li>');
+            asignarTextoElemento('resultado', '<li>Todos los amigos ya fueron sorteados</li>');
         }else{
             //Vuelve a sortear si el número ya fue sorteado
             if (numeroAmigoSorteado.includes(numeroGenerado)){
                 return sortearAmigo();
             }else{
                 //Retona el número generado y lo agrega al array de números sorteados
-                asignarTextoElemento('ul', `<li>El amigo secreto es: ${amigos[numeroGenerado]}</li>`);
+                listaAmigos.innerHTML = '';
+                asignarTextoElemento('resultado', `<li>El amigo secreto es: ${amigos[numeroGenerado]}</li>`);
                 numeroAmigoSorteado.push(numeroGenerado);
                 return numeroGenerado;
             }
