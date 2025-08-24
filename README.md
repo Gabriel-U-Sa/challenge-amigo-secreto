@@ -1,3 +1,3 @@
-Challnege amigo secreto
+Challenge amigo secreto
 
 En desarrollo del proyecto
