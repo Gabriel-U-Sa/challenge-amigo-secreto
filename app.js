@@ -11,6 +11,7 @@ function asignarTextoElemento(elemento, texto){
 //Función para agregar amigo a la lista
 function agregarAmigo(){
     let nombreAmigo = document.getElementById("amigo").value.trim();
+    listaAmigos.innerHTML = '';
     if (nombreAmigo === '') {
         //Envío alerta si el campo está vacío
         alert('Por favor, ingrese un nombre valido.');
@@ -56,7 +57,7 @@ function sortearAmigo(){
             if (numeroAmigoSorteado.includes(numeroGenerado)){
                 return sortearAmigo();
             }else{
-                //Retona el número generado y lo agrega al array de números sorteados
+                //Retorna el número generado y lo agrega al array de números sorteados
                 listaAmigos.innerHTML = '';
                 asignarTextoElemento('resultado', `<li>El amigo secreto es: ${amigos[numeroGenerado]}</li>`);
                 numeroAmigoSorteado.push(numeroGenerado);
