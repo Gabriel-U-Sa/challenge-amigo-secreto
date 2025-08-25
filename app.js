@@ -1,35 +1,69 @@
 // El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
-let amigos = [" "];
-//Función para agregar texto a un elemento HTML
-function agregarTextoElemento(elemento, texto){
-    let elementoHTML = document.querySelector(elemento);
-    //elementoHTML.innerHTML = texto;
+let amigos =[];
+let amigoSorteado = 0;
+let numeroAmigoSorteado = [];
+//Función para asignar texto a un elemento HTML
+function asignarTextoElemento(elemento, texto){
+    let elementoHTML = document.getElementById(elemento);
+    elementoHTML.innerHTML = texto;
     return;
 }
-
 //Función para agregar amigo a la lista
-function agregarAmigo() {
-    let nombreAmigo = (document.getElementById('amigo').value).trim();
-    for (let i = 0; i < amigos.length; i++) {    
-        if (nombreAmigo === '') {
-        //Envio alerta si el campo esta vacio
-            alert ('El nombre del amigo no puede estar vacío.');
-        }else{
-            //Agregar amigo a la lista
-            amigos.push(nombreAmigo);
-            document.getElementById('agregar').removeAttribute('disabled');
-            limpiarCaja();
-            //mostrarAmigos();
-            console.log(amigos);
-        }
-        return;
-    } 
+function agregarAmigo(){
+    let nombreAmigo = document.getElementById("amigo").value.trim();
+    listaAmigos.innerHTML = '';
+    if (nombreAmigo === '') {
+        //Envío alerta si el campo está vacío
+        alert('Por favor, ingrese un nombre valido.');
+    }else {
+        //Agregar amigo al array
+        amigos.push(nombreAmigo);
+        document.getElementById("amigo").value = '';
+        limpiarCaja();
+        //console.log(amigos);
+        mostrarAmigos();    
+    }
+    return;
 }
-agregarAmigo();
 
 //Función para limpiar la caja de texto
 function limpiarCaja() {
     document.querySelector('#amigo').value = '';
+    return;
 }
-
-agregarTextoElemento('h1', 'Lista de amigos');
+//Función para mostrar amigos en la lista
+function mostrarAmigos(){
+    let listaAmigos = '';
+    amigos.forEach(amigo => {
+        listaAmigos += `<li>${amigo}</li>`;
+    });
+    asignarTextoElemento('listaAmigos', listaAmigos);
+    return;
+}
+//Función para sortear amigo secreto 
+function sortearAmigo(){
+    let numeroGenerado = Math.floor(Math.random()*amigos.length);
+    //console.log(numeroGenerado);
+    //console.log(numeroAmigoSorteado);
+    if (amigos.length === 0){
+        //Texto si no hay amigos en la lista
+        asignarTextoElemento('resultado', '<li>No hay amigos en la lista</li>');
+    }else{
+        if (amigos.length == numeroAmigoSorteado.length){
+            //Texto si ya fueron sorteados todos los amigos
+            asignarTextoElemento('resultado', '<li>Todos los amigos ya fueron sorteados</li>');
+        }else{
+            //Vuelve a sortear si el número ya fue sorteado
+            if (numeroAmigoSorteado.includes(numeroGenerado)){
+                return sortearAmigo();
+            }else{
+                //Retorna el número generado y lo agrega al array de números sorteados
+                listaAmigos.innerHTML = '';
+                asignarTextoElemento('resultado', `<li>El amigo secreto es: ${amigos[numeroGenerado]}</li>`);
+                numeroAmigoSorteado.push(numeroGenerado);
+                return numeroGenerado;
+            }
+        }
+    }    
+    return;
+}
