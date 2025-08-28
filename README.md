@@ -1,6 +1,7 @@
 <h1 aling="center">Challenge amigo secreto//Alura Latam Oracle Next Education (ONE) - Gen 9 </h1>
 
 Estado del proyecto: Finalizado
+
 Versión: 1.0
 
 Uso del aprendizaje de los cursos Alura Latam, sobre logica de programación, JavaScript, Git y GitHub. El proyecto permite realizar el sorteo de amigo secreto con los nombres previamente ingresados.
