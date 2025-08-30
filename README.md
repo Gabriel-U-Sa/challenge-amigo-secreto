@@ -1,16 +1,10 @@
 <h1 aling="center">Challenge amigo secreto//Alura Latam Oracle Next Education (ONE) - Gen 9 </h1>
 
-<<<<<<< HEAD
 https://img.shields.io/badge/Estado_Proyecto:-Finaliado-purple
 https://img.shields.io/badge/Version:-1.0-blue
 https://img.shields.io/badge/Oracle_Next_Education--ONE-orange
 
 :pager: Prueba la aplicación: https://gabriel-u-sa.github.io/challenge-amigo-secreto/ 
-=======
-Estado del proyecto: Finalizado
-
-Versión: 1.0
->>>>>>> 384d035a585446ab5d164026cd74a4e72d6b66a8
 
 Uso del aprendizaje de los cursos Alura Latam, sobre logica de programación, JavaScript, Git y GitHub. El proyecto permite realizar el sorteo de amigo secreto con los nombres previamente ingresados.
 
