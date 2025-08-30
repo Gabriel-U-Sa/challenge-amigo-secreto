@@ -1,8 +1,7 @@
 <h1 aling="center">Challenge amigo secreto//Alura Latam Oracle Next Education (ONE) - Gen 9 </h1>
 
-https://img.shields.io/badge/Estado_Proyecto:-Finaliado-purple
-https://img.shields.io/badge/Version:-1.0-blue
-https://img.shields.io/badge/Oracle_Next_Education--ONE-orange
+Estado del proyecto: Finalizado
+Versión: 1.0
 
 :pager: Prueba la aplicación: https://gabriel-u-sa.github.io/challenge-amigo-secreto/ 
 
